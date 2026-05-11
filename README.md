@@ -1,6 +1,6 @@
 # DS4-Lite Inference Server
 
-A condensed web-based inference server with statistical range compression, optimized for low-bandwidth hardware. Built with Python backend and TypeScript/React frontend.
+A condensed web-based inference server with compression, optimized for low-bandwidth hardware. Built with Python backend and TypeScript/React frontend.
 
 ## Features
 
