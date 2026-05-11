@@ -163,11 +163,6 @@ Store this key securely as it's required for admin operations.
 
 ## Compression Features
 
-### Statistical Range Compression
-- 16-bit quantization reduces memory by 50% vs 32-bit floats
-- Dynamic range normalization preserves precision
-- Configurable via `QUANTIZE_BITS` environment variable
-
 ### HTTP GZIP Compression
 - Automatic compression for responses >1KB
 - Configurable compression level (1-9)
