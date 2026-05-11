@@ -18,9 +18,11 @@ NATIVE_CORE_OBJS = ds4_native.o
 METAL_LDLIBS := $(LDLIBS)
 endif
 
-.PHONY: all clean test
+.PHONY: all clean test lite
 
-all: ds4 ds4-server
+all: ds4 ds4-server ds4-lite-server
+
+lite: ds4-lite-server
 
 ifeq ($(UNAME_S),Darwin)
 ds4: ds4_cli.o linenoise.o $(CORE_OBJS)
@@ -28,6 +30,9 @@ ds4: ds4_cli.o linenoise.o $(CORE_OBJS)
 
 ds4-server: ds4_server.o rax.o $(CORE_OBJS)
 	$(CC) $(CFLAGS) -o $@ ds4_server.o rax.o $(CORE_OBJS) $(METAL_LDLIBS)
+
+ds4-lite-server: ds4_lite_server.o $(CORE_OBJS)
+	$(CC) $(CFLAGS) -o $@ ds4_lite_server.o $(CORE_OBJS) $(METAL_LDLIBS) -lz
 
 ds4_native: ds4_cli_native.o linenoise.o $(NATIVE_CORE_OBJS)
 	$(CC) $(CFLAGS) -o $@ ds4_cli_native.o linenoise.o $(NATIVE_CORE_OBJS) $(NATIVE_LDLIBS)
@@ -37,6 +42,9 @@ ds4: ds4_cli.o linenoise.o $(CORE_OBJS)
 
 ds4-server: ds4_server.o rax.o $(CORE_OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBS)
+
+ds4-lite-server: ds4_lite_server.o $(CORE_OBJS)
+	$(CC) $(CFLAGS) -o $@ ds4_lite_server.o $(CORE_OBJS) $(LDLIBS) -lz
 
 ds4_native: ds4_cli_native.o linenoise.o $(NATIVE_CORE_OBJS)
 	$(CC) $(CFLAGS) -o $@ ds4_cli_native.o linenoise.o $(NATIVE_CORE_OBJS) $(LDLIBS)
@@ -50,6 +58,9 @@ ds4_cli.o: ds4_cli.c ds4.h linenoise.h
 
 ds4_server.o: ds4_server.c ds4.h rax.h
 	$(CC) $(CFLAGS) -c -o $@ ds4_server.c
+
+ds4_lite_server.o: ds4_lite_server.c ds4.h
+	$(CC) $(CFLAGS) -c -o $@ ds4_lite_server.c
 
 ds4_test.o: tests/ds4_test.c ds4_server.c ds4.h rax.h
 	$(CC) $(CFLAGS) -Wno-unused-function -c -o $@ tests/ds4_test.c
