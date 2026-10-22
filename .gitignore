@@ -1,12 +1,77 @@
-/ds4
-/ds4-server
-/ds4_native
-/ds4_server_test
-/ds4_test
-/ds4flash.gguf
-/TODO.md
-/gguf/
+```
+# Compiled and build artifacts
+*.pyc
+__pycache__/
 *.o
-*.dSYM/
-/misc/
-.*.swp
+*.obj
+*.out
+*.exe
+*.dll
+*.so
+*.a
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+.env.*
+
+# Build directories
+dist/
+build/
+target/
+.gradle/
+
+# Python specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+*.tmp
+*.swp
+*.swo
+
+# TypeScript/JavaScript
+*.tsbuildinfo
+*.js.map
+*.d.ts.map
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+```
